@@ -16,7 +16,6 @@ export default function AddTodo({ submitHandler }) {
                 placeholder='New Todo ...'
                 onChangeText={changeHanlder}
             />
-
             <Button 
                 onPress={() => submitHandler(text)}
                 title='add Todo'
