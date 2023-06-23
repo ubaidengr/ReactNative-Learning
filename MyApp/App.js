@@ -4,8 +4,9 @@ import { StatusBar } from 'expo-status-bar';
 import { Button, StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import React, {useState} from 'react';
 import Header from './components/header';
-import TodoItem from './components/TodoItem'
-import AddTodo from './components/AddTodo';
+import TodoItem from './components/todoItem'
+import AddTodo from './components/addTodo';
+import Sandbox from './components/sandbox';
 
 export default function App() {
 
@@ -38,10 +39,11 @@ export default function App() {
   }
 
   return (
+    // <Sandbox />
     <TouchableWithoutFeedback onPress={() => {
       console.log('keyboard dismissed')
       Keyboard.dismiss()
-    }}>
+      }}>
       <View style={styles.container}>
         <Header />
         <View style={styles.content}>
@@ -67,8 +69,10 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 40,
+    flex: 1
   },
   list: {
-    marginTop: 20,
+    flex: 1,
+    marginTop: 20
   }
 });
