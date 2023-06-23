@@ -1,7 +1,7 @@
 // Todo App Lec: 9
 
 import { StatusBar } from 'expo-status-bar';
-import { Button, StyleSheet, Text, View, FlatList, Alert } from 'react-native';
+import { Button, StyleSheet, Text, View, FlatList, Alert, TouchableWithoutFeedback, Keyboard } from 'react-native';
 import React, {useState} from 'react';
 import Header from './components/header';
 import TodoItem from './components/TodoItem'
@@ -38,21 +38,25 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <Header />
-      <View style={styles.content}>
-        <AddTodo submitHandler = {submitHandler}/>
-        <View style={styles.list}>
-          <FlatList
-            data={todos}
-            renderItem={({ item }) => (
-              <TodoItem item={item} pressHandler={pressHandler} />
-            )}
-          />
+    <TouchableWithoutFeedback onPress={() => {
+      console.log('keyboard dismissed')
+      Keyboard.dismiss()
+    }}>
+      <View style={styles.container}>
+        <Header />
+        <View style={styles.content}>
+          <AddTodo submitHandler = {submitHandler}/>
+          <View style={styles.list}>
+            <FlatList
+              data={todos}
+              renderItem={({ item }) => (
+                <TodoItem item={item} pressHandler={pressHandler} />
+              )}
+            />
+          </View>
         </View>
       </View>
-    
-    </View>
+    </TouchableWithoutFeedback>
   );
 }
 
